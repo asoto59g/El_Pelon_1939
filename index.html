@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="stylesheet" href="./resources/ol.css">
+<link rel="stylesheet" href="resources/fontawesome-all.min.css">
+<link href="resources/photon-geocoder-autocomplete.min.css" rel="stylesheet">
+<link rel="stylesheet" href="./resources/ol-layerswitcher.css">
+<link rel="stylesheet" href="./resources/qgis2web.css">
+
+<style>
+html, body {
+    background-color: #ffffff;
+}
+
+html, body, #map {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* Imagen superior centrada */
+#titulo-superior {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+#titulo-superior img {
+    max-width: 90%;
+    height: auto;
+}
+
+/* Botón rotar */
+#rotate-btn {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1000;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px 12px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+#rotate-btn:hover {
+    background: #f0f0f0;
+}
+
+/* Estilo controles OpenLayers */
+.ol-control > * {
+    background-color: #f8f8f8!important;
+    color: #444444!important;
+    border-radius: 0px;
+}
+
+.ol-control {
+    background-color: rgba(255,255,255,.4) !important;
+    padding: 2px !important;
+}
+</style>
+
+<title></title>
+</head>
+
+<body>
+
+<!-- Imagen título -->
+<div id="titulo-superior">
+    <img src="images/titulo.png" alt="Título">
+</div>
+
+<!-- Botón rotación -->
+<button id="rotate-btn" title="Rotar 180°">⟳</button>
+
+<div id="map">
+    <div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+    </div>
+</div>
+
+<script src="resources/qgis2web_expressions.js"></script>
+<script src="./resources/functions.js"></script>
+<script src="./resources/ol.js"></script>
+<script src="./resources/ol-layerswitcher.js"></script>
+<script src="resources/photon-geocoder-autocomplete.min.js"></script>
+<script src="./layers/layers.js" type="text/javascript"></script> 
+<script src="./resources/Autolinker.min.js"></script>
+<script src="./resources/qgis2web.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    var rotateButton = document.getElementById("rotate-btn");
+
+    rotateButton.addEventListener("click", function() {
+        var view = map.getView();
+        var currentRotation = view.getRotation();
+
+        // Alternar entre 0 y 180 grados
+        if (currentRotation === 0) {
+            view.setRotation(Math.PI);
+        } else {
+            view.setRotation(0);
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>
