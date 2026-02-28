@@ -42,8 +42,8 @@ html, body, #map {
 /* Botón rotar */
 #rotate-btn {
     position: absolute;
-    bottom: 40px;
-    right: 40px;
+    bottom: 20px;
+    right: 20px;
     z-index: 1000;
     background: white;
     border: 1px solid #ccc;
@@ -58,7 +58,7 @@ html, body, #map {
     background: #f0f0f0;
 }
 
-/* Estilo controles OpenLayers */
+/* Estilo controles */
 .ol-control > * {
     background-color: #f8f8f8!important;
     color: #444444!important;
@@ -103,19 +103,27 @@ html, body, #map {
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
+    /* 🔹 ROTACIÓN 180° */
     var rotateButton = document.getElementById("rotate-btn");
 
     rotateButton.addEventListener("click", function() {
         var view = map.getView();
         var currentRotation = view.getRotation();
 
-        // Alternar entre 0 y 180 grados
         if (currentRotation === 0) {
             view.setRotation(Math.PI);
         } else {
             view.setRotation(0);
         }
     });
+
+    /* 🔹 MOVER BOTÓN DE CAPAS 120px HACIA ABAJO */
+    setTimeout(function() {
+        var layerBtn = document.querySelector('.ol-layerswitcher, .layer-switcher');
+        if (layerBtn) {
+            layerBtn.style.top = "120px";
+        }
+    }, 500);
 
 });
 </script>
