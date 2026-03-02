@@ -1,4 +1,4 @@
-# Visor geografico de Mapa de El Pelon 1939
+# Visor geográfico de Mapa de El Pelón 1939
 
 # Dar clic en siguiente link
 
