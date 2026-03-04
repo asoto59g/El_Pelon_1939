@@ -30,7 +30,7 @@ var wms_layers = [];
             
             source: new ol.source.XYZ({
             attributions: ' ',
-                url: 'apartos/{z}/{x}/{y}.jpg'
+                url: 'apartos/{z}/{x}/{y}.png'
             })
         });
 var format_Caminos_3 = new ol.format.GeoJSON();
