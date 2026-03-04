@@ -30,7 +30,7 @@ La cartografía resultante representa una **reconstrucción histórica aproximad
 
 Este repositorio contiene:
 
-- Capas vectoriales generadas digitalmente.  
+- Capas vectoriales y teselas de imágenes generadas digitalmente.  
 - Procesamiento cartográfico propio.  
 - Visualización web desarrollada en 2026.  
 
