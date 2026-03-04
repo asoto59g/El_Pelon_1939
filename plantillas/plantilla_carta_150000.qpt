@@ -1,0 +1,72 @@
+<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
+<Layout name="Plantilla_Hacienda_1939" units="mm" worldFileMap="">
+ <Snapper snapToItems="1" snapToGrid="1" tolerance="5" snapToGuides="1"/>
+ <Grid offsetUnits="mm" resUnits="mm" resolution="10" offsetX="0" offsetY="0"/>
+ <PageCollection>
+  <symbol type="fill" name="" clip_to_extent="1" alpha="1">
+   <layer class="SimpleFill" locked="0" enabled="1" pass="0">
+    <prop k="border_width_map_unit_scale" v="3x:0,0,0,0,0,0"/>
+    <prop k="color" v="255,255,255,255"/>
+    <prop k="joinstyle" v="miter"/>
+    <prop k="offset" v="0,0"/>
+    <prop k="offset_map_unit_scale" v="3x:0,0,0,0,0,0"/>
+    <prop k="offset_unit" v="MM"/>
+    <prop k="outline_color" v="35,35,35,255"/>
+    <prop k="outline_style" v="no"/>
+    <prop k="outline_width" v="0.26"/>
+    <prop k="outline_width_unit" v="MM"/>
+    <prop k="style" v="solid"/>
+   </layer>
+  </symbol>
+  <LayoutItem frame="false" size="215.9,279.4,mm" uuid="{page-1}" visibility="1" positionMode="0" position="0,0,mm" itemRotation="0" zValue="0" id="" type="65638" opacity="1" background="true" outlineWidthM="0.3,mm" excludeFromExports="false" referencePoint="0">
+   <FrameColor alpha="255" green="0" blue="0" red="0"/>
+   <BackgroundColor alpha="255" green="255" blue="255" red="255"/>
+   <LayoutObject>
+    <dataDefinedProperties>
+     <Option type="Map">
+      <Option name="name" type="QString" value=""/>
+      <Option name="properties"/>
+      <Option name="type" type="QString" value="collection"/>
+     </Option>
+    </dataDefinedProperties>
+    <customproperties/>
+   </LayoutObject>
+  </LayoutItem>
+ </PageCollection>
+ <LayoutItem frame="true" size="185.9,249.4,mm" uuid="{map-1}" visibility="1" positionMode="0" position="15,15,mm" itemRotation="0" zValue="1" id="Mapa Principal" type="65639" opacity="1" background="false" outlineWidthM="1,mm" mapRotation="0" keepLayerSet="false" drawCanvasItems="true" followPreset="false" excludeFromExports="false" referencePoint="0">
+  <FrameColor alpha="255" green="70" blue="45" red="95"/>
+  <BackgroundColor alpha="255" green="255" blue="255" red="255"/>
+  <LayoutObject>
+   <dataDefinedProperties>
+    <Option type="Map">
+     <Option name="name" type="QString" value=""/>
+     <Option name="properties"/>
+     <Option name="type" type="QString" value="collection"/>
+    </Option>
+   </dataDefinedProperties>
+   <customproperties/>
+  </LayoutObject>
+  <Extent xmax="536700" ymin="1120000" xmin="500000" ymax="1150000"/>
+  <LayerStack/>
+ </LayoutItem>
+ <LayoutItem frame="false" size="150,20,mm" uuid="{label-1}" visibility="1" positionMode="0" position="32.95,20,mm" itemRotation="0" zValue="2" id="Titulo" type="65641" opacity="1" background="false" outlineWidthM="0.3,mm" excludeFromExports="false" referencePoint="0" halign="4" valign="32" labelText="Hacienda El Pelón – 1939" marginY="0" marginX="0" htmlState="0">
+  <FrameColor alpha="255" green="0" blue="0" red="0"/>
+  <BackgroundColor alpha="255" green="255" blue="255" red="255"/>
+  <LayoutObject>
+   <dataDefinedProperties>
+    <Option type="Map">
+     <Option name="name" type="QString" value=""/>
+     <Option name="properties"/>
+     <Option name="type" type="QString" value="collection"/>
+    </Option>
+   </dataDefinedProperties>
+   <customproperties/>
+  </LayoutObject>
+  <LabelFont description="Goudy Old Style,18,-1,5,50,0,0,0,0,0" style=""/>
+  <FontColor alpha="255" green="60" blue="40" red="90"/>
+ </LayoutItem>
+ <customproperties>
+  <property key="atlasRasterFormat" value="png"/>
+ </customproperties>
+ <Atlas filenamePattern="'output_' || $feature" coverageLayer="" sortFeatures="false" pageNameExpression="" enabled="false" hideCoverage="false" filterFeatures="false"/>
+</Layout>
