@@ -1,6 +1,70 @@
-# Visor geográfico de Mapa de El Pelón 1939
+# 🗺 Reconstrucción Cartográfica Digital  
+## El Pelón – San Antonio (1939)
 
-# Dar clic en siguiente link
+## 📌 Descripción
+
+Este proyecto presenta una **reconstrucción cartográfica digital georreferenciada** basada en la interpretación de un plano mural histórico fechado en 1939 correspondiente a la zona de El Pelón – San Antonio, Guanacaste, Costa Rica.
+
+El trabajo no constituye una reproducción del mural original, sino una **digitalización vectorial interpretativa** de los elementos territoriales representados en la obra histórica, tales como:
+
+- Límites y subdivisiones de lotes  
+- Ríos y cuerpos de agua  
+- Caminos y senderos  
+- Toponimia histórica  
+
+---
+
+## 🛠 Metodología
+
+1. **Fuente base:** Observación e interpretación de plano mural fechado en 1939, ubicado en propiedad privada en Guanacaste, Costa Rica.  
+2. **Digitalización:** Vectorización manual en QGIS.  
+3. **Georreferenciación:** Ajuste mediante puntos de control comparados con cartografía contemporánea.  
+4. **Sistema de referencia:** WGS84 / Web Mercator (EPSG:3857).  
+5. **Publicación web:** Generación de visor interactivo mediante QGIS2Web.  
+
+La cartografía resultante representa una **reconstrucción histórica aproximada**, sujeta a las limitaciones propias de la fuente original.
+
+---
+
+## ⚖️ Naturaleza del trabajo
+
+Este repositorio contiene:
+
+- Capas vectoriales generadas digitalmente.  
+- Procesamiento cartográfico propio.  
+- Visualización web desarrollada en 2026.  
+
+No se incluyen reproducciones fotográficas del mural original.
+
+El presente proyecto constituye un trabajo de análisis territorial e interpretación histórica realizado por:
+
+**Alejandro Soto Barquero, 2026**
+
+---
+
+## 📚 Alcance histórico
+
+El plano de 1939 permite analizar:
+
+- Configuración histórica de propiedades rurales.  
+- Relación territorial con el río Tempisque.  
+- Transformaciones del paisaje en la cuenca baja guanacasteca.  
+- Evolución de caminos y asentamientos.  
+
+---
+
+## ⚠️ Limitaciones
+
+- La cartografía digital es una interpretación técnica.  
+- Las posiciones y superficies deben considerarse aproximadas.  
+- No sustituye información catastral oficial.  
+
+---
+
+
+## Visor geográfico de Mapa de El Pelón 1939
+
+## Dar clic en siguiente link
 
 https://asoto59g.github.io/El_Pelon_1939/
 
