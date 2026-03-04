@@ -19,7 +19,7 @@ var wms_layers = [];
             
             source: new ol.source.XYZ({
             attributions: ' ',
-                url: 'file:///C:/Users/AlejandroSotoBarquer/OneDrive - ABC Geomática Agricola SRL/Documentos/ABC_Gis_Activos/01_Clientes/2026/Grandes Haciendas Guanacaste Antaño/El Pelon de la Bajura 1939/Mapa_Hacienda_1939_Pro/fondo/{z}/{x}/{y}.png'
+                url: 'fondo/{z}/{x}/{y}.png'
             })
         });
 
@@ -30,7 +30,7 @@ var wms_layers = [];
             
             source: new ol.source.XYZ({
             attributions: ' ',
-                url: 'file:///C:/Users/AlejandroSotoBarquer/OneDrive - ABC Geomática Agricola SRL/Documentos/ABC_Gis_Activos/01_Clientes/2026/Grandes Haciendas Guanacaste Antaño/El Pelon de la Bajura 1939/Mapa_Hacienda_1939_Pro/apartos/{z}/{x}/{y}.png'
+                url: ' "apartos/{z}/{x}/{y}.png"'
             })
         });
 var format_Caminos_3 = new ol.format.GeoJSON();
@@ -56,7 +56,7 @@ var lyr_Caminos_3 = new ol.layer.Vector({
             
             source: new ol.source.XYZ({
             attributions: ' ',
-                url: 'file:///C:/Users/AlejandroSotoBarquer/OneDrive - ABC Geomática Agricola SRL/Documentos/ABC_Gis_Activos/01_Clientes/2026/Grandes Haciendas Guanacaste Antaño/El Pelon de la Bajura 1939/Mapa_Hacienda_1939_Pro/rios/{z}/{x}/{y}.png'
+                url: 'rios/{z}/{x}/{y}.png'
             })
         });
 
@@ -67,7 +67,7 @@ var lyr_Caminos_3 = new ol.layer.Vector({
             
             source: new ol.source.XYZ({
             attributions: ' ',
-                url: 'file:///C:/Users/AlejandroSotoBarquer/OneDrive - ABC Geomática Agricola SRL/Documentos/ABC_Gis_Activos/01_Clientes/2026/Grandes Haciendas Guanacaste Antaño/El Pelon de la Bajura 1939/Mapa_Hacienda_1939_Pro/Colindantes/{z}/{x}/{y}.png'
+                url: 'Colindantes/{z}/{x}/{y}.png'
             })
         });
 var group_Pelon1939 = new ol.layer.Group({
