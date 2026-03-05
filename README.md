@@ -49,8 +49,10 @@ El plano de 1939 permite analizar:
 - Configuración histórica de propiedades rurales.  
 - Relación territorial con el río Tempisque.  
 - Transformaciones del paisaje en la cuenca baja guanacasteca.  
-- Evolución de caminos y asentamientos.  
-
+- Evolución de caminos y asentamientos.
+- Se adjunta extracto de Revista Escuela de Agricultura de 1934 en pdf, 
+  mencionando actividades y desarrollo de esta zonas de Guanacate.
+  
 ---
 
 ## ⚠️ Limitaciones
