@@ -51,7 +51,7 @@ El plano de 1939 permite analizar:
 - Transformaciones del paisaje en la cuenca baja guanacasteca.  
 - Evolución de caminos y asentamientos.
 - Se adjunta extracto de Revista Escuela de Agricultura de 1934 en pdf, 
-  mencionando actividades y desarrollo de esta zonas de Guanacate.
+  mencionando actividades y desarrollo de esta zonas de Guanacaste.
   
 ---
 
