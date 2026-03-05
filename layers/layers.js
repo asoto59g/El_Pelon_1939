@@ -25,12 +25,12 @@ var wms_layers = [];
 
         var lyr_apartos_2 = new ol.layer.Tile({
             'title': 'apartos',
-            'opacity': 1.000000,
+            'opacity': 0.7,
             
             
             source: new ol.source.XYZ({
             attributions: ' ',
-                url: 'apartos/{z}/{x}/{y}.jpg'
+                url: 'apartos/{z}/{x}/{y}.png'
             })
         });
 var format_Caminos_3 = new ol.format.GeoJSON();
