@@ -62,7 +62,7 @@ El plano de 1939 permite analizar:
 ---
 
 
-## ![Visor](https://cdn-icons-png.flaticon.com/512/709/709592.png) Visor geográfico de Mapa de El Pelón 1939
+## :material-binoculars: Visor geográfico de Mapa de El Pelón 1939
 
 ### Dar clic en siguiente link
 
