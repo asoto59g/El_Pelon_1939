@@ -19,7 +19,7 @@ El trabajo no constituye una reproducción del mural original, sino una **digita
 1. **Fuente base:** Observación e interpretación de plano mural fechado en 1939, ubicado en propiedad privada en Guanacaste, Costa Rica.  
 2. **Digitalización:** Vectorización manual en QGIS.  
 3. **Georreferenciación:** Ajuste mediante puntos de control comparados con cartografía contemporánea.  
-4. **Sistema de referencia:** WGS84 / Web Mercator (EPSG:3857).  
+4. **Sistema de referencia:** CR-SIRGAS epoch 2014.59/CRTM05 EPSG:8908 
 5. **Publicación web:** Generación de visor interactivo mediante QGIS2Web.  
 
 La cartografía resultante representa una **reconstrucción histórica aproximada**, sujeta a las limitaciones propias de la fuente original.
@@ -64,7 +64,7 @@ El plano de 1939 permite analizar:
 
 ## Visor geográfico de Mapa de El Pelón 1939
 
-## Dar clic en siguiente link
+### Dar clic en siguiente link
 
 https://asoto59g.github.io/El_Pelon_1939/
 
