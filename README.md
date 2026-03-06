@@ -19,7 +19,7 @@ El trabajo no constituye una reproducción del mural original, sino una **digita
 1. **Fuente base:** Observación e interpretación de plano mural fechado en 1939, ubicado en propiedad privada en Guanacaste, Costa Rica.  
 2. **Digitalización:** Vectorización manual en QGIS.  
 3. **Georreferenciación:** Ajuste mediante puntos de control comparados con cartografía contemporánea.  
-4. **Sistema de referencia:** CR-SIRGAS epoch 2014.59/CRTM05 EPSG:8908 
+4. **Sistema de referencia:** WGS84 EPSG:4326 
 5. **Publicación web:** Generación de visor interactivo mediante QGIS2Web.  
 
 La cartografía resultante representa una **reconstrucción histórica aproximada**, sujeta a las limitaciones propias de la fuente original.
@@ -30,7 +30,7 @@ La cartografía resultante representa una **reconstrucción histórica aproximad
 
 Este repositorio contiene:
 
-- Capas vectoriales y teselas de imágenes generadas digitalmente.  
+- Capas vectoriales tipo js y teselas de imágenes tipo {z}/{x}/{y}.png generadas digitalmente.  
 - Procesamiento cartográfico propio.  
 - Visualización web desarrollada en 2026.  
 
