@@ -85,7 +85,7 @@ La licencia completa se encuentra en:
 
 /webfonts/OFL.txt
 
-## 🖼️ Simbologias y texturas de para Qgis
+## 🖼️ Simbologias y texturas para Qgis
 
 Se encuentran:
 
