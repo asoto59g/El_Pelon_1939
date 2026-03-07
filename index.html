@@ -44,13 +44,30 @@ background:#f8f8f8!important;
 color:#444!important;
 }
 
+/* TÍTULO DEL MAPA */
+
+#tituloMapa{
+position:absolute;
+top:10px;
+left:50px;
+right:50px;
+z-index:4000;
+background:white;
+padding:6px 10px;
+font-family:Arial;
+font-size:16px;
+border-radius:4px;
+text-align:center;
+box-shadow:0 1px 4px rgba(0,0,0,0.2);
+}
+
 /* PANEL OPACIDAD */
 
 #opacity-panel{
 position:fixed;
-top:10px;
+top:60px;
 right:10px;
-z-index:3000;
+z-index:5000;
 background:white;
 padding:8px;
 border-radius:6px;
@@ -67,13 +84,11 @@ touch-action: manipulation;
 /* PANEL CERRADO */
 
 #opacity-panel.hidden{
-
 width:32px;
 height:32px;
 max-height:32px;
 padding:2px;
 overflow:hidden;
-
 }
 
 /* ocultar contenido */
@@ -99,7 +114,7 @@ font-weight:bold;
 font-size:14px;
 }
 
-/* botón */
+/* botón panel */
 
 #toggle-panel{
 cursor:pointer;
@@ -111,6 +126,8 @@ width:26px;
 height:26px;
 line-height:26px;
 padding:0;
+position:relative;
+z-index:6000;
 }
 
 /* capas */
@@ -135,18 +152,23 @@ height:14px;
 width:100%;
 }
 
-/* título mapa */
+/* AJUSTE PARA CELULARES */
+
+@media (max-width:600px){
 
 #tituloMapa{
-position:absolute;
-top:10px;
-left:60px;
-z-index:4000;
-background:white;
-padding:6px 10px;
-font-family:Arial;
-font-size:18px;
-border-radius:4px;
+font-size:13px;
+top:5px;
+left:45px;
+right:45px;
+padding:4px 6px;
+}
+
+#opacity-panel{
+top:50px;
+right:6px;
+}
+
 }
 
 </style>
@@ -213,7 +235,6 @@ Liberia, Guanacaste, Costa Rica<br>
 
 </div>
 
-
 <script src="resources/qgis2web_expressions.js"></script>
 <script src="./resources/functions.js"></script>
 <script src="./resources/ol.js"></script>
@@ -226,7 +247,6 @@ Liberia, Guanacaste, Costa Rica<br>
 
 <script src="./resources/Autolinker.min.js"></script>
 <script src="./resources/qgis2web.js"></script>
-
 
 <script>
 
@@ -242,7 +262,6 @@ this.innerText = panel.classList.contains("hidden") ? "+" : "–"
 
 }
 
-
 /* limpiar HTML título */
 
 function limpiarTitulo(html){
@@ -254,7 +273,6 @@ temp.innerHTML=html
 return temp.textContent || temp.innerText || ""
 
 }
-
 
 /* recorrer capas */
 
@@ -275,7 +293,6 @@ lista.push(layer)
 }
 
 }
-
 
 /* crear sliders */
 
@@ -306,27 +323,16 @@ var baseOpacity=layer.getOpacity()
 var div=document.createElement("div")
 div.className="layer-control"
 
-
-/* header */
-
 var header=document.createElement("div")
 header.className="layer-header"
-
-
-/* icono leyenda */
 
 var icon=document.createElement("img")
 
 icon.src="styles/legend/"+title+"_0.png"
 
 icon.onerror=function(){
-
 this.style.display="none"
-
 }
-
-
-/* texto */
 
 var label=document.createElement("span")
 
@@ -334,9 +340,6 @@ label.innerText=title
 
 header.appendChild(icon)
 header.appendChild(label)
-
-
-/* slider */
 
 var slider=document.createElement("input")
 
@@ -362,7 +365,6 @@ container.appendChild(div)
 })
 
 }
-
 
 window.onload=function(){
 
