@@ -7,6 +7,7 @@
 <title>Mapa histórico Sitio Pelón 1939 - Liberia Guanacaste</title>
 
 <meta name="description" content="Mapa histórico georreferenciado de los potreros del Sitio Pelón en Liberia Guanacaste basado en planos de 1921. Proyecto GIS realizado con QGIS y publicado en GitHub.">
+
 <meta name="keywords" content="mapa historico Liberia Guanacaste, Sitio Pelón, Minor C Keith, GIS Costa Rica, mapa antiguo Liberia">
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,6 +37,8 @@ width:100%;
 height:100vh;
 }
 
+/* controles OpenLayers */
+
 .ol-control > * {
 background:#f8f8f8!important;
 color:#444!important;
@@ -56,27 +59,36 @@ font-family:Arial;
 font-size:11px;
 max-height:260px;
 overflow:auto;
-width:130px;
+width:140px;
 transition:all 0.3s;
+touch-action: manipulation;
 }
 
-/* panel cerrado */
+/* PANEL CERRADO */
 
 #opacity-panel.hidden{
+
 width:32px;
 height:32px;
-padding:4px;
+max-height:32px;
+padding:2px;
 overflow:hidden;
+
 }
 
-/* ocultar contenido cuando está cerrado */
+/* ocultar contenido */
 
-#opacity-panel.hidden #panel-title,
-#opacity-panel.hidden #layer-sliders{
+#opacity-panel.hidden #panel-title{
 display:none;
 }
 
-/* encabezado */
+#opacity-panel.hidden #layer-sliders{
+display:none;
+height:0;
+overflow:hidden;
+}
+
+/* header */
 
 #panel-header{
 display:flex;
@@ -94,9 +106,10 @@ cursor:pointer;
 background:#eee;
 border:none;
 border-radius:4px;
-font-size:14px;
-width:24px;
-height:24px;
+font-size:16px;
+width:26px;
+height:26px;
+line-height:26px;
 padding:0;
 }
 
@@ -122,7 +135,7 @@ height:14px;
 width:100%;
 }
 
-/* título del mapa */
+/* título mapa */
 
 #tituloMapa{
 position:absolute;
@@ -155,7 +168,7 @@ border-radius:4px;
 
 <body>
 
-<h1 style="display:none;">
+<h1 style="display:none">
 Mapa histórico de los Potreros del Sitio Pelón 1939 en Liberia Guanacaste
 </h1>
 
@@ -166,6 +179,7 @@ Mapa histórico Sitio Pelón 1939
 <div id="map">
 
 <div style="max-width:700px;margin:auto;font-family:Arial;font-size:12px;padding:5px;line-height:1.2">
+
 <h3>Ubicación aproximada del área histórica:</h3>
 
 <p>
@@ -176,8 +190,11 @@ Liberia, Guanacaste, Costa Rica<br>
 </div>
 
 <div id="popup" class="ol-popup">
+
 <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+
 <div id="popup-content"></div>
+
 </div>
 
 </div>
@@ -196,6 +213,7 @@ Liberia, Guanacaste, Costa Rica<br>
 
 </div>
 
+
 <script src="resources/qgis2web_expressions.js"></script>
 <script src="./resources/functions.js"></script>
 <script src="./resources/ol.js"></script>
@@ -209,9 +227,10 @@ Liberia, Guanacaste, Costa Rica<br>
 <script src="./resources/Autolinker.min.js"></script>
 <script src="./resources/qgis2web.js"></script>
 
+
 <script>
 
-/* BOTON OCULTAR PANEL */
+/* BOTON COLAPSAR PANEL */
 
 document.getElementById("toggle-panel").onclick=function(){
 
@@ -219,11 +238,12 @@ var panel=document.getElementById("opacity-panel")
 
 panel.classList.toggle("hidden")
 
-this.innerText=panel.classList.contains("hidden")?"+":"–"
+this.innerText = panel.classList.contains("hidden") ? "+" : "–"
 
 }
 
-/* limpiar HTML del título */
+
+/* limpiar HTML título */
 
 function limpiarTitulo(html){
 
@@ -235,7 +255,8 @@ return temp.textContent || temp.innerText || ""
 
 }
 
-/* recorrer capas dentro de grupos */
+
+/* recorrer capas */
 
 function obtenerCapas(layer,lista){
 
@@ -254,6 +275,7 @@ lista.push(layer)
 }
 
 }
+
 
 /* crear sliders */
 
@@ -284,10 +306,12 @@ var baseOpacity=layer.getOpacity()
 var div=document.createElement("div")
 div.className="layer-control"
 
-/* cabecera */
+
+/* header */
 
 var header=document.createElement("div")
 header.className="layer-header"
+
 
 /* icono leyenda */
 
@@ -296,16 +320,21 @@ var icon=document.createElement("img")
 icon.src="styles/legend/"+title+"_0.png"
 
 icon.onerror=function(){
+
 this.style.display="none"
+
 }
+
 
 /* texto */
 
 var label=document.createElement("span")
+
 label.innerText=title
 
 header.appendChild(icon)
 header.appendChild(label)
+
 
 /* slider */
 
@@ -333,6 +362,7 @@ container.appendChild(div)
 })
 
 }
+
 
 window.onload=function(){
 
