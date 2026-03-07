@@ -3,11 +3,15 @@
 <head>
 
 <meta charset="utf-8">
+
 <title>Mapa histórico Sitio Pelón 1939 - Liberia Guanacaste</title>
+
 <meta name="description" content="Mapa histórico georreferenciado de los potreros del Sitio Pelón en Liberia Guanacaste basado en planos de 1921. Proyecto GIS realizado con QGIS y publicado en GitHub.">
 <meta name="keywords" content="mapa historico Liberia Guanacaste, Sitio Pelón, Minor C Keith, GIS Costa Rica, mapa antiguo Liberia">
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -21,13 +25,15 @@
 
 html, body {
 background:#ffffff;
-}
-
-html, body, #map {
-width:100%;
-height:100%;
 margin:0;
 padding:0;
+height:100%;
+overflow:hidden;
+}
+
+#map{
+width:100%;
+height:100vh;
 }
 
 .ol-control > * {
@@ -35,13 +41,12 @@ background:#f8f8f8!important;
 color:#444!important;
 }
 
-
 /* PANEL OPACIDAD */
 
 #opacity-panel{
-position:absolute;
-top:8px;
-right:8px;
+position:fixed;
+top:10px;
+right:10px;
 z-index:3000;
 background:white;
 padding:8px;
@@ -58,12 +63,10 @@ transition:all 0.3s;
 /* panel cerrado */
 
 #opacity-panel.hidden{
-
 width:32px;
 height:32px;
 padding:4px;
 overflow:hidden;
-
 }
 
 /* ocultar contenido cuando está cerrado */
@@ -72,7 +75,6 @@ overflow:hidden;
 #opacity-panel.hidden #layer-sliders{
 display:none;
 }
-
 
 /* encabezado */
 
@@ -98,7 +100,6 @@ height:24px;
 padding:0;
 }
 
-
 /* capas */
 
 .layer-control{
@@ -121,9 +122,21 @@ height:14px;
 width:100%;
 }
 
-</style>
+/* título del mapa */
 
-<title>Mapa histórico de los Potreros del Sitio Pelón 1939 en Liberia Guanacaste</title>
+#tituloMapa{
+position:absolute;
+top:10px;
+left:60px;
+z-index:4000;
+background:white;
+padding:6px 10px;
+font-family:Arial;
+font-size:18px;
+border-radius:4px;
+}
+
+</style>
 
 <script type="application/ld+json">
 {
@@ -137,44 +150,37 @@ width:100%;
  }
 }
 </script>
- 
+
 </head>
 
 <body>
+
 <h1 style="display:none;">
 Mapa histórico de los Potreros del Sitio Pelón 1939 en Liberia Guanacaste
 </h1>
-<style>
-#tituloMapa{
- position:absolute;
- top:10px;
- left:60px;
- z-index:1000;
- background:white;
- padding:6px 10px;
- font-family:Arial;
- font-size:18px;
-}
-</style>
-  
+
+<div id="tituloMapa">
+Mapa histórico Sitio Pelón 1939
+</div>
+
 <div id="map">
 
 <div style="max-width:700px;margin:auto;font-family:Arial;font-size:12px;padding:5px;line-height:1.2">
 <h3>Ubicación aproximada del área histórica:</h3>
+
 <p>
-Liberia, Guanacaste, Costa Rica
+Liberia, Guanacaste, Costa Rica<br>
 10.4854° N, 85.4243° W
 </p>
- 
+
 </div>
- 
+
 <div id="popup" class="ol-popup">
 <a href="#" id="popup-closer" class="ol-popup-closer"></a>
 <div id="popup-content"></div>
 </div>
 
 </div>
-
 
 <div id="opacity-panel">
 
@@ -190,7 +196,6 @@ Liberia, Guanacaste, Costa Rica
 
 </div>
 
-
 <script src="resources/qgis2web_expressions.js"></script>
 <script src="./resources/functions.js"></script>
 <script src="./resources/ol.js"></script>
@@ -203,7 +208,6 @@ Liberia, Guanacaste, Costa Rica
 
 <script src="./resources/Autolinker.min.js"></script>
 <script src="./resources/qgis2web.js"></script>
-
 
 <script>
 
@@ -219,7 +223,6 @@ this.innerText=panel.classList.contains("hidden")?"+":"–"
 
 }
 
-
 /* limpiar HTML del título */
 
 function limpiarTitulo(html){
@@ -231,7 +234,6 @@ temp.innerHTML=html
 return temp.textContent || temp.innerText || ""
 
 }
-
 
 /* recorrer capas dentro de grupos */
 
@@ -252,7 +254,6 @@ lista.push(layer)
 }
 
 }
-
 
 /* crear sliders */
 
@@ -295,9 +296,7 @@ var icon=document.createElement("img")
 icon.src="styles/legend/"+title+"_0.png"
 
 icon.onerror=function(){
-
 this.style.display="none"
-
 }
 
 /* texto */
@@ -345,14 +344,3 @@ setTimeout(crearSliders,800)
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
