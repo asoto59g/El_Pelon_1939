@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="stylesheet" href="./resources/ol.css">
+<link rel="stylesheet" href="resources/fontawesome-all.min.css">
+<link href="resources/photon-geocoder-autocomplete.min.css" rel="stylesheet">
+<link rel="stylesheet" href="./resources/qgis2web.css">
+
+<style>
+
+html, body {
+background:#ffffff;
+}
+
+html, body, #map {
+width:100%;
+height:100%;
+margin:0;
+padding:0;
+}
+
+.ol-control > * {
+background:#f8f8f8!important;
+color:#444!important;
+}
+
+
+/* PANEL OPACIDAD */
+
+#opacity-panel{
+position:absolute;
+top:8px;
+right:8px;
+z-index:3000;
+background:white;
+padding:8px;
+border-radius:6px;
+box-shadow:0 2px 6px rgba(0,0,0,0.3);
+font-family:Arial;
+font-size:11px;
+max-height:260px;
+overflow:auto;
+width:130px;
+transition:all 0.3s;
+}
+
+/* panel cerrado */
+
+#opacity-panel.hidden{
+
+width:32px;
+height:32px;
+padding:4px;
+overflow:hidden;
+
+}
+
+/* ocultar contenido cuando está cerrado */
+
+#opacity-panel.hidden #panel-title,
+#opacity-panel.hidden #layer-sliders{
+display:none;
+}
+
+
+/* encabezado */
+
+#panel-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:6px;
+font-weight:bold;
+font-size:14px;
+}
+
+/* botón */
+
+#toggle-panel{
+cursor:pointer;
+background:#eee;
+border:none;
+border-radius:4px;
+font-size:14px;
+width:24px;
+height:24px;
+padding:0;
+}
+
+
+/* capas */
+
+.layer-control{
+margin-bottom:8px;
+}
+
+.layer-header{
+display:flex;
+align-items:center;
+gap:4px;
+margin-bottom:2px;
+}
+
+.layer-header img{
+width:14px;
+height:14px;
+}
+
+.layer-control input{
+width:100%;
+}
+
+</style>
+
+<title>Mapa</title>
+
+</head>
+
+<body>
+
+<div id="map">
+
+<div id="popup" class="ol-popup">
+<a href="#" id="popup-closer" class="ol-popup-closer"></a>
+<div id="popup-content"></div>
+</div>
+
+</div>
+
+
+<div id="opacity-panel">
+
+<div id="panel-header">
+
+<span id="panel-title">Capas</span>
+
+<button id="toggle-panel">–</button>
+
+</div>
+
+<div id="layer-sliders"></div>
+
+</div>
+
+
+<script src="resources/qgis2web_expressions.js"></script>
+<script src="./resources/functions.js"></script>
+<script src="./resources/ol.js"></script>
+<script src="resources/photon-geocoder-autocomplete.min.js"></script>
+
+<script src="layers/Caminos_3.js"></script>
+<script src="styles/Caminos_3_style.js"></script>
+
+<script src="./layers/layers.js"></script>
+
+<script src="./resources/Autolinker.min.js"></script>
+<script src="./resources/qgis2web.js"></script>
+
+
+<script>
+
+/* BOTON OCULTAR PANEL */
+
+document.getElementById("toggle-panel").onclick=function(){
+
+var panel=document.getElementById("opacity-panel")
+
+panel.classList.toggle("hidden")
+
+this.innerText=panel.classList.contains("hidden")?"+":"–"
+
+}
+
+
+/* limpiar HTML del título */
+
+function limpiarTitulo(html){
+
+var temp=document.createElement("div")
+
+temp.innerHTML=html
+
+return temp.textContent || temp.innerText || ""
+
+}
+
+
+/* recorrer capas dentro de grupos */
+
+function obtenerCapas(layer,lista){
+
+if(layer.getLayers){
+
+layer.getLayers().forEach(function(l){
+
+obtenerCapas(l,lista)
+
+})
+
+}else{
+
+lista.push(layer)
+
+}
+
+}
+
+
+/* crear sliders */
+
+function crearSliders(){
+
+var container=document.getElementById("layer-sliders")
+
+var capas=[]
+
+map.getLayers().forEach(function(layerGroup){
+
+obtenerCapas(layerGroup,capas)
+
+})
+
+capas.reverse()
+
+capas.forEach(function(layer){
+
+var title=layer.get("title")
+
+if(!title) return
+
+title=limpiarTitulo(title)
+
+var baseOpacity=layer.getOpacity()
+
+var div=document.createElement("div")
+div.className="layer-control"
+
+/* cabecera */
+
+var header=document.createElement("div")
+header.className="layer-header"
+
+/* icono leyenda */
+
+var icon=document.createElement("img")
+
+icon.src="styles/legend/"+title+"_0.png"
+
+icon.onerror=function(){
+
+this.style.display="none"
+
+}
+
+/* texto */
+
+var label=document.createElement("span")
+label.innerText=title
+
+header.appendChild(icon)
+header.appendChild(label)
+
+/* slider */
+
+var slider=document.createElement("input")
+
+slider.type="range"
+slider.min=0
+slider.max=100
+slider.step=1
+slider.value=50
+
+slider.addEventListener("input",function(){
+
+var factor=this.value/50
+
+layer.setOpacity(baseOpacity*factor)
+
+})
+
+div.appendChild(header)
+div.appendChild(slider)
+
+container.appendChild(div)
+
+})
+
+}
+
+window.onload=function(){
+
+setTimeout(crearSliders,800)
+
+}
+
+</script>
+
+</body>
+</html>
