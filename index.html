@@ -1,66 +1,384 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" href="./resources/ol.css">
-        <link rel="stylesheet" href="resources/fontawesome-all.min.css">
-        <link href="resources/photon-geocoder-autocomplete.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
-        <link rel="stylesheet" href="./resources/qgis2web.css">
-        <style>
-        html, body {
-            background-color: #ffffff;
-        }
-        .ol-control > * {
-            background-color: #f8f8f8!important;
-            color: #444444!important;
-            border-radius: 0px;
-        }
-        .ol-attribution a, .gcd-gl-input::placeholder, .search-layer-input-search::placeholder {
-            color: #444444!important;
-        }
-        .search-layer-input-search {
-            background-color: #f8f8f8!important;
-        }
-        .ol-control > *:focus, .ol-control >*:hover {
-            background-color: rgba(248, 248, 248, 0.7)!important;
-        } 
-        .ol-control {
-            background-color: rgba(255,255,255,.4) !important;
-            padding: 2px !important;
-        } 
-        </style>
+<head>
 
-        <style>
-        html, body, #map {
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
-        </style>
-        <title></title>
-    </head>
-    <body>
-        <div id="map">
-            <div id="popup" class="ol-popup">
-                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-                <div id="popup-content"></div>
-            </div>
-        </div>
-        <script src="resources/qgis2web_expressions.js"></script>
-        <script src="./resources/functions.js"></script>
-        <script src="./resources/ol.js"></script>
-        <script src="./resources/ol-layerswitcher.js"></script>
-        <script src="resources/photon-geocoder-autocomplete.min.js"></script>
-        <script src="layers/Caminos_3.js"></script>
-        <script src="styles/Caminos_3_style.js"></script>
-        <script src="./layers/layers.js" type="text/javascript"></script> 
-        <script src="./resources/Autolinker.min.js"></script>
-        <script src="./resources/qgis2web.js"></script>        
-    </body>
+<meta charset="utf-8">
+
+<title>Mapa histórico Sitio Pelón 1939 - Liberia Guanacaste</title>
+
+<meta name="description" content="Mapa histórico georreferenciado de los potreros del Sitio Pelón en Liberia Guanacaste basado en planos de 1921. Proyecto GIS realizado con QGIS y publicado en GitHub.">
+
+<meta name="keywords" content="mapa historico Liberia Guanacaste, Sitio Pelón, Minor C Keith, GIS Costa Rica, mapa antiguo Liberia">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="stylesheet" href="./resources/ol.css">
+<link rel="stylesheet" href="resources/fontawesome-all.min.css">
+<link href="resources/photon-geocoder-autocomplete.min.css" rel="stylesheet">
+<link rel="stylesheet" href="./resources/qgis2web.css">
+
+<style>
+
+html, body {
+background:#ffffff;
+margin:0;
+padding:0;
+height:100%;
+overflow:hidden;
+}
+
+#map{
+width:100%;
+height:100vh;
+}
+
+/* controles OpenLayers */
+
+.ol-control > * {
+background:#f8f8f8!important;
+color:#444!important;
+}
+
+/* TÍTULO DEL MAPA */
+
+#tituloMapa{
+position:absolute;
+top:10px;
+left:50px;
+right:50px;
+z-index:4000;
+background:white;
+padding:6px 10px;
+font-family:Arial;
+font-size:16px;
+border-radius:4px;
+text-align:center;
+box-shadow:0 1px 4px rgba(0,0,0,0.2);
+}
+
+/* PANEL OPACIDAD */
+
+#opacity-panel{
+position:fixed;
+top:60px;
+right:10px;
+z-index:5000;
+background:white;
+padding:8px;
+border-radius:6px;
+box-shadow:0 2px 6px rgba(0,0,0,0.3);
+font-family:Arial;
+font-size:11px;
+max-height:260px;
+overflow:auto;
+width:140px;
+transition:all 0.3s;
+touch-action: manipulation;
+}
+
+/* PANEL CERRADO */
+
+#opacity-panel.hidden{
+width:32px;
+height:32px;
+max-height:32px;
+padding:2px;
+overflow:hidden;
+}
+
+/* ocultar contenido */
+
+#opacity-panel.hidden #panel-title{
+display:none;
+}
+
+#opacity-panel.hidden #layer-sliders{
+display:none;
+height:0;
+overflow:hidden;
+}
+
+/* header */
+
+#panel-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:6px;
+font-weight:bold;
+font-size:14px;
+}
+
+/* botón panel */
+
+#toggle-panel{
+cursor:pointer;
+background:#eee;
+border:none;
+border-radius:4px;
+font-size:16px;
+width:26px;
+height:26px;
+line-height:26px;
+padding:0;
+position:relative;
+z-index:6000;
+}
+
+/* capas */
+
+.layer-control{
+margin-bottom:8px;
+}
+
+.layer-header{
+display:flex;
+align-items:center;
+gap:4px;
+margin-bottom:2px;
+}
+
+.layer-header img{
+width:14px;
+height:14px;
+}
+
+.layer-control input{
+width:100%;
+}
+
+/* AJUSTE PARA CELULARES */
+
+@media (max-width:600px){
+
+#tituloMapa{
+font-size:13px;
+top:5px;
+left:45px;
+right:45px;
+padding:4px 6px;
+}
+
+#opacity-panel{
+top:50px;
+right:6px;
+}
+
+}
+
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Map",
+ "name": "Mapa histórico Sitio Pelón 1921",
+ "description": "Mapa georreferenciado de los potreros del Sitio Pelón en Liberia Guanacaste basado en planos históricos.",
+ "spatialCoverage": {
+   "@type": "Place",
+   "name": "Liberia, Guanacaste, Costa Rica"
+ }
+}
+</script>
+
+</head>
+
+<body>
+
+<h1 style="display:none">
+Mapa histórico de los Potreros del Sitio Pelón 1939 en Liberia Guanacaste
+</h1>
+
+<div id="tituloMapa">
+Mapa histórico Sitio Pelón 1939
+</div>
+
+<div id="map">
+
+<div style="max-width:700px;margin:15px;font-family:Arial;font-size:12px;padding:5px;line-height:1.2">
+
+<p>
+Liberia, 
+Guanacaste, Costa Rica<br>
+10.4854° N, 85.4243° W
+</p>
+
+</div>
+
+<div id="popup" class="ol-popup">
+
+<a href="#" id="popup-closer" class="ol-popup-closer"></a>
+
+<div id="popup-content"></div>
+
+</div>
+
+</div>
+
+<div id="opacity-panel">
+
+<div id="panel-header">
+
+<span id="panel-title">Capas</span>
+
+<button id="toggle-panel">–</button>
+
+</div>
+
+<div id="layer-sliders"></div>
+
+</div>
+
+<script src="resources/qgis2web_expressions.js"></script>
+<script src="./resources/functions.js"></script>
+<script src="./resources/ol.js"></script>
+<script src="resources/photon-geocoder-autocomplete.min.js"></script>
+
+<script src="layers/Caminos_3.js"></script>
+<script src="styles/Caminos_3_style.js"></script>
+
+<script src="./layers/layers.js"></script>
+
+<script src="./resources/Autolinker.min.js"></script>
+<script src="./resources/qgis2web.js"></script>
+
+<script>
+
+/* BOTON COLAPSAR PANEL */
+
+document.getElementById("toggle-panel").onclick=function(){
+
+var panel=document.getElementById("opacity-panel")
+
+panel.classList.toggle("hidden")
+
+this.innerText = panel.classList.contains("hidden") ? "+" : "–"
+
+}
+
+/* limpiar HTML título */
+
+function limpiarTitulo(html){
+
+var temp=document.createElement("div")
+
+temp.innerHTML=html
+
+return temp.textContent || temp.innerText || ""
+
+}
+
+/* recorrer capas */
+
+function obtenerCapas(layer,lista){
+
+if(layer.getLayers){
+
+layer.getLayers().forEach(function(l){
+
+obtenerCapas(l,lista)
+
+})
+
+}else{
+
+lista.push(layer)
+
+}
+
+}
+
+/* crear sliders */
+
+function crearSliders(){
+
+var container=document.getElementById("layer-sliders")
+
+var capas=[]
+
+map.getLayers().forEach(function(layerGroup){
+
+obtenerCapas(layerGroup,capas)
+
+})
+
+capas.reverse()
+
+capas.forEach(function(layer){
+
+var title=layer.get("title")
+
+if(!title) return
+
+title=limpiarTitulo(title)
+
+var baseOpacity=layer.getOpacity()
+
+var div=document.createElement("div")
+div.className="layer-control"
+
+var header=document.createElement("div")
+header.className="layer-header"
+
+var icon=document.createElement("img")
+
+icon.src="styles/legend/"+title+"_0.png"
+
+icon.onerror=function(){
+this.style.display="none"
+}
+
+var label=document.createElement("span")
+
+label.innerText=title
+
+header.appendChild(icon)
+header.appendChild(label)
+
+var slider=document.createElement("input")
+
+slider.type="range"
+slider.min=0
+slider.max=100
+slider.step=1
+slider.value=50
+
+slider.addEventListener("input",function(){
+
+var factor=this.value/50
+
+layer.setOpacity(baseOpacity*factor)
+
+})
+
+div.appendChild(header)
+div.appendChild(slider)
+
+container.appendChild(div)
+
+})
+
+}
+
+window.onload=function(){
+
+setTimeout(crearSliders,800)
+
+}
+
+</script>
+
+</body>
 </html>
+
+
+
+
+
+
+
