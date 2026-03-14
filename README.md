@@ -50,7 +50,7 @@ Previamente se investiga para buscar planos de la Hacienda antes de esta fecha:
 - En mapa de 1889 (Montes de Oca aparece anotado Hacienda).
 - En mapa de 1898 topografico de Pittier se anota Hacienda.
 - En 1921 y 1926 aparece en Archivo Nacional dos planos El Pelon pero son Hacienda Cacao (El Pelon de la Altura) de Minor C. Keith. Con   ref. arch CR AN CR-AN-AH-MYP-000285 y CR-AN-CR-AN-AH-MYP-021253
-- En 1924 aparece la desembocadura rio Salto.
+- En 1924 aparece la desembocadura rio Salto, digitalizado en este mismo Git de asoto59g.
 
 El plano de 1939 permite analizar:
 
