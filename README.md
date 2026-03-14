@@ -44,6 +44,14 @@ El presente proyecto constituye un trabajo de análisis territorial e interpreta
 
 ## 📚 Alcance histórico
 
+Previamente se investiga para buscar planos de la Hacienda antes de esta fecha:
+
+- Hay referencia de 1880 de ubicacion de Grandes Haciendas en este mismo Git de asoto59g.
+- En mapa de 1889 (Montes de Oca aparece anotado Hacienda).
+- En mapa de 1898 topografico de Pittier se anota Hacienda.
+- En 1921 y 1926 aparece en Archivo Nacional dos planos El Pelon pero son Hacienda Cacao (El Pelon de la Altura) de Minor C. Keith.
+- En 1924 aparece la desembocadura rio Salto.
+
 El plano de 1939 permite analizar:
 
 - Configuración histórica de propiedades rurales.  
