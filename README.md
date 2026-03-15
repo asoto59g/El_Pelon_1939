@@ -44,7 +44,7 @@ El presente proyecto constituye un trabajo de análisis territorial e interpreta
 
 ## 📚 Alcance histórico
 
-Previamente se investiga para buscar planos de la Hacienda antes de esta fecha:
+Previamente son buscados planos de la Hacienda antes de esta fecha:
 
 - Hay referencia de 1880 de ubicación de Grandes Haciendas en este mismo Git de asoto59g.
 - En mapa de 1889 (Montes de Oca aparece anotado Hacienda).
